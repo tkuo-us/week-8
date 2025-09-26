@@ -1,4 +1,4 @@
-# Week 0
+# Week 8
 
 This week is meant to give you a very basic introduction to ... In particular, we will focus on the following:
 
