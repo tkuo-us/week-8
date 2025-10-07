@@ -5,13 +5,13 @@ class MarkovText(object):
 
     def __init__(self, corpus):
         self.corpus = corpus
-        self.quote_dict = None  # you'll need to build this
+        self.term_dict = None  # you'll need to build this
 
-    def get_quote_dict(self):
+    def get_term_dict(self):
 
         # your code here ...
 
-        self.quote_dict = {}
+        self.term_dict = {}
 
         return None
 
