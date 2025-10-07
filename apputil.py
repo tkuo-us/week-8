@@ -16,7 +16,7 @@ class MarkovText(object):
         return None
 
 
-    def generate(self, term_count=15, seed_term=None):
+    def generate(self, seed_term=None, term_count=15):
 
         # your code here ...
 
