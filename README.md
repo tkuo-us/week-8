@@ -1,9 +1,13 @@
 # Week 8
 
-This week is meant to give you a very basic introduction to ... In particular, we will focus on the following:
+This week's lab is meant to introduce you to Natural Language Processing (NLP), and provide a very brief survey of some methods used in the field. In particular, we'll cover the following:
 
-- XXX
-- XXX
+- Preprocessing
+- Vectorization
+- Topic Modeling
+- Visualization
+
+*Note: in this course, will not cover the aspects of NLP which use artificial neural networks.*
 
 ## Setup
 
@@ -16,14 +20,21 @@ This week is meant to give you a very basic introduction to ... In particular, w
 The environment for this week is built with the following environment.yml:
 
 ```yml
-name: coding-exercise
+name: h501-week-8
 dependencies:
   - python=3.11
   - pip
   - pip:
+    - ipykernel
     - streamlit
+    - seaborn
     - pandas
     - numpy
+    - plotly
+    - spacy
+    - scikit-learn
+    - corextopic
+    - vaderSentiment
 ```
 
 *Note: you are welcome to install more packages in your codespace, but they will not be used by the autograder.*
