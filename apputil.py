@@ -41,7 +41,7 @@ class MarkovText:
         self.term_dict = dict(td)
         return self.term_dict
 
-    def generate(self, term_count=20, seed_term=None, restart_on_deadend=True):
+    def generate(self, seed_term=None, term_count=15, restart_on_deadend=True):
         """
         Generate text using a Markov Chain model.
 
