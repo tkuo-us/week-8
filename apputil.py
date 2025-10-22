@@ -1,5 +1,6 @@
 from collections import defaultdict
 import numpy as np
+import re
 
 
 class MarkovText:
@@ -8,7 +9,14 @@ class MarkovText:
         Initialize the MarkovText object with a given text corpus.
         The corpus is split into tokens (words) for further processing.
         """
+        # remove long whitespaces (see regex101.com)
+        corpus = re.sub(r"\s+", " ", corpus)
+        # remove punctuation
+        corpus = re.sub(r'[^\w\s]', "", corpus)
+        # remove leading/trailing whitespaces
+        corpus = corpus.strip()
         self.corpus = corpus
+
         self.tokens = corpus.split()
         self._term_dict = None
 
@@ -30,28 +38,27 @@ class MarkovText:
         td = defaultdict(list)
         for i in range(len(self.tokens) - 1):
             td[self.tokens[i]].append(self.tokens[i + 1])
-        self._term_dict = dict(td)
-        return self._term_dict
+        self.term_dict = dict(td)
+        return self.term_dict
 
-    def generate(self, term_count=20, seed_term=None, random_state=None, restart_on_deadend=True):
+    def generate(self, term_count=20, seed_term=None, restart_on_deadend=True):
         """
         Generate text using a Markov Chain model.
 
         Args:
             term_count (int): Number of tokens to generate.
             seed_term (str, optional): Starting word. Raises ValueError if not in corpus.
-            random_state (int, optional): Random seed for reproducibility.
             restart_on_deadend (bool): If True, randomly restarts when reaching a dead-end state.
 
         Returns:
             str: A string of generated text.
         """
         # use the term dictionary built in ex1
-        term_dict = self._term_dict or self.get_term_dict()
+        term_dict = self.term_dict or self.get_term_dict()
         if not term_dict:
             return ""
 
-        rng = np.random.default_rng(random_state)
+        rng = np.random.default_rng()
         keys = list(term_dict.keys())
 
         # choose the starting term
